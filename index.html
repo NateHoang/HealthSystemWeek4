@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Week 4.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="week-4">Week 4</h1>
+<h2 id="page-1">Page 1</h2>
+<ol>
+<li>Hello, I’m Valerie Phillips, the director of the Office of Research and Community Engagement at California Northstate University, College of Dental Medicine. In this presentation we will cover the most common office based oral health care delivery systems.</li>
+</ol>
+<h2 id="page-2">Page 2</h2>
+<ol>
+<li>We will look at types of private practice, types of dental clinics, government operated dental care and we will discuss dental service organizations (DSO). DSOs are not necessarily a distinct category as they overlap with other categories. However, DSOs are having an increasing impact on oral health delivery.</li>
+</ol>
+<h2 id="page-3">Page 3</h2>
+<ol>
+<li>Traditionally the largest amount of dental care has been delivered by independent private practitioners. Dentists who own their own practice. They are both the owner and the supervising dentist. Solo practice refers to the type of private practice that includes just one owner/dentist.</li>
+<li>This slide lists some of the pros and cons of practice ownership. Many dentists like the flexibility of owning their own business.</li>
+</ol>
+<h2 id="page-4">Page 4</h2>
+<ol>
+<li>This slide from the Health Policy Institute demonstrates that the number of dentists in solo practice declined over the last couple decades. One factor is that younger dentists and female dentists are less likely to opt for a solo practice.</li>
+<li>65% of dentists were in solo practice in 1999. That proportion had decreased to 46% in 2021.</li>
+</ol>
+<h2 id="page-5">Page 5</h2>
+<ol>
+<li>As you can see here there is a significant difference in the proportion of male dentists who are in solo practice compared female dentists.</li>
+</ol>
+<h2 id="page-6">Page 6</h2>
+<ol>
+<li>Although we are seeing the decrease in solo practice among all dentists regardless of age and gender, the decrease is even greater among the younger dentists. As shown in this graph the under 30-year-old dentists represented about 7.4% of solo practitioners in 2021, and the 65 and older dentists represent about 60% of all solo practice owners.</li>
+<li>Some of the reasons noted for this decrease include work/life balance, student debt and the increased cost of operating a solo practice, especially since the pandemic that brought a requirement for increased personal protective equipment.</li>
+</ol>
+<h2 id="page-7">Page 7</h2>
+<ol>
+<li>Finally, we can see from this slide that practice ownership has also declined over the last several decades. This is most pronounced among younger dentists where ownership among dentists under 30 years old fell from 25.4% in 2015 to 9.5% in 2021.</li>
+</ol>
+<h2 id="page-8">Page 8</h2>
+<ol>
+<li>It is becoming more common for dentists to work as an associate in a practice than in the past, especially for younger dentists.</li>
+<li>There are lots of associate arrangements and ways that associates are paid. These vary from straight salary to incentive programs based on production. Sometimes there is a path to partial or full ownership.</li>
+<li>In most associate arrangements the owner dentist supplies the patients for the associate, but in some cases associates are expected to bring in their own patients.</li>
+</ol>
+<h2 id="page-9">Page 9</h2>
+<ol>
+<li>The term group practice usually means a single location with more than one dentist; however, it can refer to a dental group with multiple locations. Technically, even a dentist who has an associate would be considered a group practice. There are many advantages to working in a group practice. The dentist owners can share the many expenses of running a practice and staying in compliance with the various regulations. They can cover for each other in emergencies, and they can discuss and even collaborate on cases.</li>
+<li>In some groups all the dentists have the same area of expertise – i.e. general dentistry groups. There are also multi-specialty groups.</li>
+</ol>
+<h2 id="page-10">Page 10</h2>
+<ol>
+<li>Moving away from private practice we can look at clinics that deliver oral health care. One type of community clinic is a Federally Qualified Health Center, or FQHC, which is a comprehensive health care system. All FQHCs provide general health services, but not all FQHCs include a dental clinic.</li>
+<li>FQHCs are authorized and designated by the federal Health Resources and Services Administration (HRSA). These locations tend to be rural, where few health professionals practice, or in highly populated areas that can demonstrate a need for their services. This designation allows the FQHC to receive government funding and reimbursement using the encounter-based payment system. FQHCs can accept all forms of payment for care.</li>
+</ol>
+<h2 id="page-11">Page 11</h2>
+<ol>
+<li>Another type of clinic is the community clinic. Some community clinics are run by non-profit organizations. Some of these are “free clinics”. However, there are also community clinics that accept payment and insurance and bill Fee for service.</li>
+<li>Typically, patients are not denied care at these clinics, however, wait lists can be very long.</li>
+</ol>
+<h2 id="page-12">Page 12</h2>
+<ol>
+<li>We should mention dental school clinics as well. Dental school clinics play a very important role in access to care for many patients. Schools can provide low-cost dental care to the community. All care is supervised and approved by licensed dentists and the patient often gets more personal care than they might at a busy dental practice. You could say that the dental school clinic is also part of the health care safety net as they provide care for those who are not privileged enough to receive care at a traditional private practice.</li>
+</ol>
+<h2 id="page-13">Page 13</h2>
+<ol>
+<li>The government provides dental care services to some populations through the Veterans Administration, the Military, The Indian Health Service and the Department of Corrections.</li>
+<li>In these systems the government owns and pays for all the expenses involved in setting up and running these delivery systems. Oral health professionals who work in these systems are typically employees or contractors and are not responsible for the cost of operating the services.</li>
+</ol>
+<h2 id="page-14">Page 14</h2>
+<ol>
+<li>Dental service organizations, or more commonly called “DSOs”, are organizations that contract with a practice owner to provide management or business support for the practice.</li>
+<li>There are different types of DSO contracts, depending on how much of the nonclinical systems the dentist wishes the DSO to operate.</li>
+<li>In a system where the DSO provides all management and business services, the dentist no longer has to worry about hiring, firing, training, billing insurance, collecting fees and all the regulations of running a business.</li>
+</ol>
+<h2 id="page-15">Page 15</h2>
+<ol>
+<li>This slide, from the Association of Dental Support Organizations lists some of their stated advantages. Please read the details on the slide.</li>
+</ol>
+<h2 id="page-16">Page 16</h2>
+<ol>
+<li>On this slide we see the trend for younger, newer dentists to be more likely to sign a contract with a DSO to operate the business end of their practice. In fact, one in 5 dentists under 35 were affiliated with a DSO in 2019, according to HPI’s most current data. Some older dentists do find a DSO appealing towards the end of their careers.</li>
+</ol>
+<h2 id="page-17">Page 17</h2>
+<ol>
+<li>Aspen Dental, Pacific Dental Services and Heartland Dental are among the largest DSOs in the US.</li>
+</ol>
+<h2 id="page-18">Page 18</h2>
+<ol>
+<li>Another type of dental care delivery is hospital based. There are many individuals, due to disability or health conditions, who cannot tolerate receiving dental care in the dental office or clinic. Additionally, many providers do not feel adequately trained to provide effective dental care to these population groups. These patients can be offered dental care using sedation or general anesthesia in a surgical suite at a hospital. Unfortunately, there are not enough such suites available to meet the demand and it is not uncommon for there to be long wait lists for this type of service.</li>
+<li>In addition, some hospitals have actual dental clinics within the hospital for affiliated with the hospital and serve as community clinics. These are often affiliated with a dental school.</li>
+</ol>
+<h2 id="page-19">Page 19</h2>
+<ol>
+<li>In this presentation you have been introduced to the most common systems of oral health care delivery in the US. Historically, most dental care was delivered in the private practice dental office, however, as we have learned, this model of care is declining as we are seeing younger dentists go into group practices, associateships, or contract with a DSO.</li>
+<li>Dental clinics of various types play and important and increasing role in delivering care to those who are unable to obtain care at a private practice. Hospitals also contribute to the sources of care for people who don’t access care in the traditional dental office system.</li>
+<li>However, in spite of advances in the “safety-net”, there are still many patients who are not able to obtain care. Newer and innovative models of care will be explored in future modules.</li>
+</ol>
+
+</body>
+</html>
